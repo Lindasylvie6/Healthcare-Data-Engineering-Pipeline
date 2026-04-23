@@ -22,34 +22,32 @@ This layer follows a star schema design with fact and dimension tables, enabling
 - Separation of dimensions (filters) and facts (measures)
 - Supports interactive dashboards and business decision-making
 
+---
+## GOLD LAYER – BUSINESS LOGIC & ANALYTICS (POWER BI READY)
 
-=============================================================
-GOLD LAYER – BUSINESS LOGIC & ANALYTICS (POWER BI READY)
-=============================================================
 
-Description:
+#### Description:
 This script creates the Gold layer of the healthcare data warehouse.
 The Gold layer transforms cleaned Silver data into business-ready,
 analytics-optimized tables designed for reporting and dashboards.
 
-Purpose:
+#### Purpose:
 - Enable fast and efficient querying for Power BI
 - Provide curated datasets for business users
 - Support key healthcare analytics use cases (utilization, revenue, quality)
 
-Design Approach:
+#### Design Approach:
 - Star schema (fact and dimension tables)
 - Dimension tables provide filtering and slicing capabilities
 - Fact tables store measurable business metrics
 - Pre-aggregated and derived metrics improve dashboard performance
 
-Key Components:
+#### Key Components:
 - Dimensions: patient, provider, date
 - Facts: encounters, claims, denials, clinical, KPIs, provider performance
 
-Notes:
+#### Notes:
 - Gold layer is optimized for analytics, not raw data storage
 - Data is sourced from validated Silver tables
 - Business logic and aggregations are applied here
 
-=============================================================
