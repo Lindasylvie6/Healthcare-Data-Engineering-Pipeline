@@ -532,6 +532,7 @@ BEGIN
         year_month,
         department,
         visit_type,
+        insurance_provider,
         total_encounters,
         avg_length_of_stay,
         readmission_count,
@@ -551,46 +552,45 @@ BEGIN
         gold_load_dt
     )
     SELECT
-        FORMAT(e.visit_date, 'yyyy-MM')                    AS year_month,
+        FORMAT(e.visit_date, 'yyyy-MM'),
         e.department,
         e.visit_type,
-        COUNT(DISTINCT e.encounter_id)                     AS total_encounters,
-        -- Cap LOS at 999.99
+        c.insurance_provider,
+        COUNT(DISTINCT e.encounter_id),
         CAST(ISNULL(AVG(CAST(
             CASE WHEN e.length_of_stay > 999 
             THEN NULL 
             ELSE e.length_of_stay END AS FLOAT)),0) 
-            AS DECIMAL(10,2))                              AS avg_length_of_stay,
-        SUM(CAST(ISNULL(e.readmitted_flag,0) AS INT))      AS readmission_count,
+            AS DECIMAL(10,2)),
+        SUM(CAST(ISNULL(e.readmitted_flag,0) AS INT)),
         CAST(CASE
             WHEN COUNT(DISTINCT e.encounter_id) > 0
             THEN CAST(SUM(CAST(ISNULL(e.readmitted_flag,0) AS INT)) AS FLOAT)
                 / COUNT(DISTINCT e.encounter_id)
             ELSE 0
-        END AS DECIMAL(10,4))                              AS readmission_rate,
-        SUM(ISNULL(c.billed_amount, 0))                    AS total_billed,
-        SUM(ISNULL(c.paid_amount, 0))                      AS total_paid,
-        SUM(ISNULL(c.billed_amount,0)
-            - ISNULL(c.paid_amount,0))                     AS total_unpaid,
+        END AS DECIMAL(10,4)),
+        SUM(ISNULL(c.billed_amount, 0)),
+        SUM(ISNULL(c.paid_amount, 0)),
+        SUM(ISNULL(c.billed_amount,0) - ISNULL(c.paid_amount,0)),
         CAST(CASE
             WHEN SUM(ISNULL(c.billed_amount,0)) > 0
             THEN SUM(ISNULL(c.paid_amount,0))
                 / SUM(ISNULL(c.billed_amount,0))
             ELSE 0
-        END AS DECIMAL(10,4))                              AS collection_rate,
+        END AS DECIMAL(10,4)),
         COUNT(DISTINCT CASE WHEN c.is_denied = 1
-            THEN c.claim_id END)                           AS total_denials,
+            THEN c.claim_id END),
         CAST(CASE
             WHEN COUNT(DISTINCT c.claim_id) > 0
             THEN CAST(COUNT(DISTINCT CASE WHEN c.is_denied = 1
                 THEN c.claim_id END) AS FLOAT)
                 / COUNT(DISTINCT c.claim_id)
             ELSE 0
-        END AS DECIMAL(10,4))                              AS denial_rate,
-        ISNULL(SUM(CAST(d.appeal_filed AS INT)), 0)        AS appeals_filed,
+        END AS DECIMAL(10,4)),
+        ISNULL(SUM(CAST(d.appeal_filed AS INT)), 0),
         COUNT(DISTINCT CASE
             WHEN UPPER(d.appeal_status) = 'APPROVED'
-            THEN d.denial_id END)                          AS appeals_overturned,
+            THEN d.denial_id END),
         CAST(CASE
             WHEN ISNULL(SUM(CAST(d.appeal_filed AS INT)),0) > 0
             THEN CAST(COUNT(DISTINCT CASE
@@ -598,16 +598,16 @@ BEGIN
                 THEN d.denial_id END) AS FLOAT)
                 / NULLIF(SUM(CAST(d.appeal_filed AS INT)),0)
             ELSE 0
-        END AS DECIMAL(10,4))                              AS overturn_rate,
-        COUNT(DISTINCT pr.procedure_id)                    AS total_procedures,
-        COUNT(DISTINCT lt.lab_id)                          AS total_lab_tests,
+        END AS DECIMAL(10,4)),
+        COUNT(DISTINCT pr.procedure_id),
+        COUNT(DISTINCT lt.lab_id),
         CAST(CASE
             WHEN COUNT(DISTINCT lt.lab_id) > 0
             THEN CAST(SUM(CAST(ISNULL(lt.is_abnormal,0) AS INT)) AS FLOAT)
                 / COUNT(DISTINCT lt.lab_id)
             ELSE 0
-        END AS DECIMAL(10,4))                              AS abnormal_lab_rate,
-        GETUTCDATE()                                       AS gold_load_dt
+        END AS DECIMAL(10,4)),
+        GETUTCDATE()
     FROM silver.encounters e
     LEFT JOIN silver.claims c
         ON e.encounter_id = c.encounter_id
@@ -621,7 +621,8 @@ BEGIN
     GROUP BY
         FORMAT(e.visit_date, 'yyyy-MM'),
         e.department,
-        e.visit_type;
+        e.visit_type,
+        c.insurance_provider;
 END;
 GO
 
