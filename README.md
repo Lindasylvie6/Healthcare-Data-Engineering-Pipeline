@@ -56,6 +56,22 @@ The pipeline is orchestrated using Azure Data Factory, which manages ingestion, 
 - Ensured referential integrity
 
 ---
+### 🚨 Data Quality Issue & Resolution
+
+During dashboard development, the readmission rate appeared as **52%**, which was unrealistic.
+
+##### Root Cause:
+Outpatient and telehealth visits were incorrectly flagged as readmissions.
+
+##### Solution:
+- Analyzed encounter data at the Silver layer
+- Filtered readmission logic to only include inpatient visits
+- Validated results using SQL aggregation
+
+##### Result:
+Corrected readmission rate to **19.8%**, aligning with clinical expectations.
+
+---
 ### 📊 Example Use Cases
 - Patient visit analysis
 - Provider performance tracking
