@@ -69,7 +69,7 @@ Outpatient and telehealth visits were incorrectly flagged as readmissions.
 - Validated results using SQL aggregation
 
 ##### Result:
-Corrected readmission rate to **19.8%**, aligning with clinical expectations.
+Corrected readmission rate to **15.7%**, aligning with clinical expectations.
 
 ---
 ### 📊 Example Use Cases
