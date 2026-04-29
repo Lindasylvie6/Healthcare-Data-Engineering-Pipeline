@@ -34,6 +34,9 @@ The pipeline is orchestrated using Azure Data Factory, which manages ingestion, 
 - Reports and analytics
 - End-user data access
 
+<img width="1440" height="900" alt="Screenshot 2026-04-28 at 4 55 50 PM" src="https://github.com/user-attachments/assets/147bb1d6-3f66-4681-b6d4-c18699c2dee4" />
+
+
 ---
 ### ⚙️ Data Pipeline (ADF)
 - Pipeline orchestration using Azure Data Factory
@@ -41,6 +44,8 @@ The pipeline is orchestrated using Azure Data Factory, which manages ingestion, 
 - Data Flows / SQL for transformations
 - Scheduling and monitoring
 - Error handling and logging
+  
+<img width="1440" height="807" alt="pl_Marter_bronze_load" src="https://github.com/user-attachments/assets/fd47ec4a-b54b-465a-b2d4-670043b81cfa" />
 
 ---
 ### 🧪 Data Quality & Validation
