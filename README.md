@@ -1,100 +1,92 @@
-# Healthcare Data Warehouse and Analytics Project
+# 🏥 Healthcare Data Engineering & Analytics Platform
+### Enterprise Case Study: Modernizing Healthcare KPI Reporting with Azure & Databricks
 ---
-### 🚀 Overview
+### 1. Executive Summary
 
-This project demonstrates the design of an end-to-end healthcare data pipeline using Azure Data Factory concepts and a **medallion architecture** (Bronze, Silver, Gold). It incorporates **ETL processes**, **SQL**-based data transformation, and data modeling to ingest, clean, and standardize raw datasets into analytics-ready data.
+Healthcare organizations often struggle with fragmented data sources, inconsistent KPI definitions, and delayed reporting for operational and clinical decision-making.
 
-The project emphasizes **data integration, data quality validation, and troubleshooting**, reflecting core data engineering responsibilities such as **building, optimizing, and maintaining scalable data pipelines**. 
+This project simulates an enterprise-grade data platform designed to unify healthcare data and deliver trusted, near-real-time executive insights using a modern lakehouse architecture.
 
-This project simulates a real-world data engineering workflow from ingestion to analytics.
+The solution centralizes patient, encounter, provider, and claims data into a governed pipeline and delivers an Executive Summary dashboard used for high-level performance monitoring.
 
 ---
+### 2. Business Problem
 
-### 🧱 Data Architecture (Medallion Model)
-The pipeline is orchestrated using Azure Data Factory, which manages ingestion, transformation, and data movement across layers.
-<img width="716" height="535" alt="DWH_Architecture" src="https://github.com/user-attachments/assets/dbec3efd-2558-4b25-876f-2e091290f961" />
+Healthcare stakeholders faced the following challenges:
 
-#### 🟤 Bronze Layer (Raw Data)
-- Stores raw CSV files as-is
-- Minimal transformation
-- Batch ingestion
+- KPI inconsistencies (e.g., readmission rate definition varied across reports)
+- Delayed reporting cycles for executive dashboards
+- Fragmented datasets across operational systems
+- Limited visibility into provider and clinical performance trends
+- Business Objective
+
+#### Build a unified analytics platform that:
+
+- Standardizes healthcare KPIs
+- Improves data reliability and traceability
+- Enables faster executive decision-making
+---
+### 3. Solution Overview
+
+A modern medallion architecture (Bronze → Silver → Gold) was implemented using Azure Data Factory and Databricks.
+
+##### Architecture Flow
+- Azure Data Factory → Data ingestion from raw healthcare sources
+- Databricks (Bronze Layer) → Raw ingestion and initial storage
+- Databricks (Silver Layer) → Data cleaning, validation, standardization
+- Databricks (Gold Layer) → KPI aggregation and business-ready datasets
+- Power BI → Executive dashboards and reporting layer
+
+--- 
+### 5. Executive Summary Dashboard (Power BI)
+
+The final dashboard was designed for executive-level stakeholders to monitor healthcare performance across key dimensions:
+
+- Readmission rates
+- Encounter volumes
+- Provider performance
+- Revenue and utilization trends
+
+##### The dashboard enables:
+
+- Faster identification of operational inefficiencies
+- Standardized KPI interpretation across departments
+- High-level visibility into healthcare system performance
+
+---  
+
+### 6. Databricks Implementation (Gold Layer Focus)
+- Developed PySpark-based transformations for KPI aggregation
+- Designed and optimized the fact_monthly_kpis gold table
+- Used Delta Lake for reliability, versioning, and performance optimization
+- Integrated Databricks SQL endpoints for BI consumption
+- Leveraged AI-assisted tools (Databricks Genie) to accelerate exploration, validate logic, and refine KPI definitions during development
   
-#### 🥈 Silver Layer (Cleaned Data)
-- Data cleaning and standardization
-- Deduplication and validation
-- Ensures data quality
-  
-#### 🥇 Gold Layer (Business-Ready Data)
-- Business logic and aggregations
-- Star schema (fact and dimension tables)
-- Optimized for reporting
+---
+### 7. Key Design Decisions
+- Adopted medallion architecture to enforce data quality progression
+- Centralized KPI logic in the gold layer to avoid metric fragmentation
+- Used Delta Lake for ACID compliance and historical traceability
+- Separated transformation logic (Databricks) from visualization layer (Power BI)
 
-#### 📊 Consume Layer
-- Power BI dashboards
-- Reports and analytics
-- End-user data access
-
-<img width="1440" height="900" alt="Screenshot 2026-04-28 at 4 55 50 PM" src="https://github.com/user-attachments/assets/147bb1d6-3f66-4681-b6d4-c18699c2dee4" />
-
-#### 📊 Databricks (Executive Summary Dashboard)
-- Built and optimized the gold-layer fact_monthly_kpis table in Databricks to support the Executive Summary dashboard
-- Leveraged Delta Lake for reliable, versioned KPI reporting and consistent dashboard performance
-- Integrated AI-assisted development (Databricks Genie / AI tools) to accelerate data exploration, validation, and KPI logic refinement
-
-<img width="1438" height="779" alt="2026-04-30_databricks-executive-summary" src="https://github.com/user-attachments/assets/14985a8f-f405-4c1c-83c7-07414c99c9d7" />
-
+--- 
+### 8. Outcome / Impact
+This architecture demonstrates:
+- A scalable approach to healthcare analytics
+- Improved consistency of KPI definitions
+- Reduced complexity in downstream reporting
+- A reusable framework for enterprise-grade data pipelines
 
 ---
-### ⚙️ Data Pipeline (ADF)
-- Pipeline orchestration using Azure Data Factory
-- Copy Activity for ingestion
-- Data Flows / SQL for transformations
-- Scheduling and monitoring
-- Error handling and logging
-  
-<img width="1440" height="807" alt="pl_Marter_bronze_load" src="https://github.com/user-attachments/assets/fd47ec4a-b54b-465a-b2d4-670043b81cfa" />
+### 9. Technologies Used
+- Azure Data Factory
+- Azure Data Lake
+- Databricks (PySpark, Delta Lake, SQL)
+- Power BI
+- AI-assisted development (Databricks Genie)
 
 ---
-### 🧪 Data Quality & Validation
-- Removed duplicate records
-- Handled missing values
-- Validated primary and foreign keys
-- Standardized formats (dates, text fields)
-- Ensured referential integrity
 
----
-### 🚨 Data Quality Issue & Resolution
-
-During dashboard development, the readmission rate appeared as **52%**, which was unrealistic.
-
-##### Root Cause:
-Outpatient and telehealth visits were incorrectly flagged as readmissions.
-
-##### Solution:
-- Analyzed encounter data at the Silver layer
-- Filtered readmission logic to only include inpatient visits
-- Validated results using SQL aggregation
-
-##### Result:
-Corrected readmission rate to **15.7%**, aligning with clinical expectations.
-
----
-### 📊 Example Use Cases
-- Patient visit analysis
-- Provider performance tracking
-- Claims and billing insights
-- Denial rate analysis
-
----
-### 🛠️ Tools & Technologies
-
-- **Azure Data Factory (Concepts)** : Pipeline orchestration, data ingestion, and transformation  
-- **SQL** : Data transformation, validation, and modeling  
-- **Power BI** : Data visualization and reporting  
-- **Draw.io** : Data architecture and pipeline diagrams  
-- **Notion** : Project planning, task tracking, and documentation  
-
----
 ### License
 
 This project is licensed under the [MIT LICENSE](LICENSE). You are free to use, modify, and share this project with proper attribution.
