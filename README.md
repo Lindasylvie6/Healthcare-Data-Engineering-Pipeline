@@ -36,6 +36,13 @@ The pipeline is orchestrated using Azure Data Factory, which manages ingestion, 
 
 <img width="1440" height="900" alt="Screenshot 2026-04-28 at 4 55 50 PM" src="https://github.com/user-attachments/assets/147bb1d6-3f66-4681-b6d4-c18699c2dee4" />
 
+#### 📊 Databricks (Executive Summary Dashboard)
+- Built and optimized the gold-layer fact_monthly_kpis table in Databricks to support the Executive Summary dashboard
+- Leveraged Delta Lake for reliable, versioned KPI reporting and consistent dashboard performance
+- Integrated AI-assisted development (Databricks Genie / AI tools) to accelerate data exploration, validation, and KPI logic refinement
+
+<img width="1438" height="779" alt="2026-04-30_databricks-executive-summary" src="https://github.com/user-attachments/assets/14985a8f-f405-4c1c-83c7-07414c99c9d7" />
+
 
 ---
 ### ⚙️ Data Pipeline (ADF)
