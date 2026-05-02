@@ -1,6 +1,8 @@
 # 🏥 Healthcare Data Engineering & Analytics Platform
 ### Enterprise Case Study: Modernizing Healthcare KPI Reporting with Azure & Databricks
 ---
+<img width="960" height="788" alt="Screenshot 2026-05-02 at 1 43 43 PM" src="https://github.com/user-attachments/assets/38639384-69a2-49c4-a753-b3b508e8d613" />
+
 ### 1. Executive Summary
 
 Healthcare organizations often struggle with fragmented data sources, inconsistent KPI definitions, and delayed reporting for operational and clinical decision-making.
