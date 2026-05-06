@@ -39,17 +39,18 @@ Healthcare stakeholders faced the following challenges:
 
 ## 3. Solution Overview
 
-A modern medallion architecture (Bronze → Silver → Gold) was implemented using Azure Data Factory and Databricks.
+A modern medallion architecture (Bronze → Silver → Gold) was implemented using Azure Data Factory, Azure Blob Storage, Azure SQL Database, and Databricks.
 
 #### Architecture Flow
 
 | Layer | Tool | Purpose |
 |---|---|---|
-| Ingestion | Azure Data Factory | Pull raw data from healthcare source systems |
-| Bronze | Azure Blob Storage | Raw storage, no transformations |
-| Silver | Databricks | Cleaning, validation, standardization |
-| Gold | Databricks + Delta Lake | KPI aggregation, business-ready datasets |
-| Reporting | Power BI | Executive dashboards and stakeholder reporting |
+| Ingestion | Azure Data Factory | Orchestrate and pull raw data from healthcare source systems |
+| Bronze | Azure Blob Storage | Raw storage — data landed as-is, no transformations |
+| Silver | Azure SQL Database | Cleaning, validation, and standardization |
+| Gold | Azure SQL Database | KPI aggregation and business-ready datasets |
+| Executive Analytics | Databricks | Reads from Gold layer — powers Executive Summary analysis |
+| Reporting | Power BI | Dashboards for all four reporting domains |
 
 ---
 
@@ -65,13 +66,15 @@ A modern medallion architecture (Bronze → Silver → Gold) was implemented usi
 
 ---
 
-## 5. Databricks Implementation (Gold Layer Focus)
+## 5. Databricks Implementation (Gold Layer — Executive Summary)
+
+Databricks connects to the Gold layer in Azure SQL Database to power the Executive Summary analysis and KPI exploration:
 
 - Developed PySpark-based transformations for KPI aggregation
 - Designed and optimized the `fact_monthly_kpis` gold table
 - Used Delta Lake for reliability, versioning, and performance optimization
 - Integrated Databricks SQL endpoints for BI consumption
-- Leveraged AI-assisted tools (Databricks Genie) to accelerate exploration, validate logic, and refine KPI definitions during development
+- Leveraged Databricks Genie to accelerate exploration, validate logic, and refine KPI definitions during development
 
 **Databricks Executive Summary (Gold Layer)**
 
@@ -93,10 +96,13 @@ A modern medallion architecture (Bronze → Silver → Gold) was implemented usi
 
 ## 7. Key Design Decisions
 
-- Adopted medallion architecture to enforce data quality progression
-- Centralized KPI logic in the gold layer to avoid metric fragmentation
-- Used Delta Lake for ACID compliance and historical traceability
-- Separated transformation logic (Databricks) from visualization layer (Power BI)
+| Decision | Rationale |
+|---|---|
+| Azure Blob Storage for Bronze | Cost-effective raw landing zone; no transformation needed at ingestion |
+| Azure SQL Database for Silver & Gold | Structured, queryable storage ideal for validated and aggregated healthcare data |
+| Databricks scoped to Executive Summary | Reserved for complex KPI exploration and AI-assisted analysis at the Gold layer |
+| KPI logic centralized in Gold | Prevents metric fragmentation across downstream reports |
+| Power BI as reporting layer | Familiar to healthcare stakeholders; connects directly to Azure SQL endpoints |
 
 ---
 
@@ -146,11 +152,11 @@ This platform demonstrates a production-ready approach to healthcare analytics t
 | Category | Tools |
 |---|---|
 | Orchestration | Azure Data Factory |
-| Storage | Azure Data Lake Storage Gen2 |
-| Transformation | Databricks, PySpark, Delta Lake |
-| Serving | Databricks SQL Endpoints |
+| Raw Storage | Azure Blob Storage |
+| Silver & Gold Storage | Azure SQL Database |
+| Executive Analytics | Databricks (PySpark, Delta Lake, SQL) |
+| AI-Assisted Development | Databricks Genie |
 | Visualization | Power BI |
-| AI-Assisted Dev | Databricks Genie |
 
 ---
 
@@ -162,7 +168,7 @@ This project is licensed under the [MIT LICENSE](LICENSE). You are free to use, 
 
 ## 👤 About Me
 
-I'm **Sylvie Linda**, a data engineer specializing in cloud-native healthcare data pipelines on Azure. I design end-to-end solutions — from raw ingestion through medallion architecture transformations to executive-ready KPI dashboards — using Azure Data Factory, Databricks, Delta Lake, and Power BI.
+I'm **Sylvie Linda**, a data engineer specializing in cloud-native healthcare data pipelines on Azure. I design end-to-end solutions from raw ingestion through medallion architecture transformations to executive-ready KPI dashboards using Azure Data Factory, Azure SQL Database, Databricks, and Power BI.
 
 This project reflects my focus on building scalable, governed data platforms that turn fragmented healthcare data into trusted insights for clinical and operational decision-making.
 
