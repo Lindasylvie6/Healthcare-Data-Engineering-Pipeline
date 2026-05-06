@@ -1,6 +1,5 @@
 # 🏥 Healthcare Data Engineering & Analytics Platform
 ### Enterprise Case Study: Modernizing Healthcare KPI Reporting with Azure & Databricks
-
 ---
 
 ## 📐 Architecture Overview
