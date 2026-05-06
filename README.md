@@ -119,7 +119,6 @@ The final dashboard was designed for executive-level stakeholders to monitor hea
 This project is licensed under the [MIT LICENSE](LICENSE). You are free to use, modify, and share this project with proper attribution.
 
 ---
-### 👤 About me
 
 ### 👤 About Me
 
@@ -127,4 +126,4 @@ I'm **Sylvie Linda**, a data engineer specializing in cloud-native healthcare da
 
 This project reflects my focus on building scalable, governed data platforms that turn fragmented healthcare data into trusted insights for clinical and operational decision-making.
 
-📫 [Connect with me on LinkedIn]https://www.linkedin.com/in/sylvie-linda-85087416a/ | 📧 Lindasylvie6@email.com
+📫 https://www.linkedin.com/in/sylvie-linda-85087416a/ | 📧 Lindasylvie6@email.com
