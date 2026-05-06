@@ -1,7 +1,7 @@
 ## 🏥 Healthcare Data Engineering & Analytics Platform
 ### Enterprise Case Study: Modernizing Healthcare KPI Reporting with Azure & Databricks
 ---
-<img width="960" height="788" alt="Screenshot 2026-05-02 at 1 43 43 PM" src="https://github.com/user-attachments/assets/38639384-69a2-49c4-a753-b3b508e8d613" />
+
 
 ####  Gold Layer Data Model
 
@@ -41,7 +41,12 @@ The solution centralizes patient, encounter, provider, and claims data into a go
 ---
 ### 3. Solution Overview
 
-A modern medallion architecture (Bronze → Silver → Gold) was implemented using Azure Data Factory and Databricks.
+A modern medallion architecture (Bronze → Silver → Gold) was implemented 
+using Azure Data Factory and Databricks.
+
+**Data Warehouse Architecture**
+![DWH Architecture](docs/DWH_Architecture.png)
+
 
 ##### Architecture Flow
 - Azure Data Factory → Data ingestion from raw healthcare sources
@@ -51,7 +56,19 @@ A modern medallion architecture (Bronze → Silver → Gold) was implemented usi
 - Databricks → Executive dashboards
 - Power BI → Executive dashboards and reporting layer
 
---- 
+**Data Integration Flow**
+![Data Integration](docs/Data_Integratiion.png)
+
+---
+### 4. Pipeline Implementation
+
+**Master Bronze Load Pipeline (ADF)**
+![Bronze Pipeline](docs/pl_Marter_bronze_load.png)
+
+**Bronze Layer Overview**
+![Bronze Overview](docs/bronze_overview.png)
+
+---
 ### 4. Executive Summary Dashboard (Power BI)
 
 #### Dashboard Previews
@@ -74,12 +91,17 @@ A modern medallion architecture (Bronze → Silver → Gold) was implemented usi
 ---  
 
 ### 5. Databricks Implementation (Gold Layer Focus)
+
 - Developed PySpark-based transformations for KPI aggregation
 - Designed and optimized the fact_monthly_kpis gold table
 - Used Delta Lake for reliability, versioning, and performance optimization
 - Integrated Databricks SQL endpoints for BI consumption
-- Leveraged AI-assisted tools (Databricks Genie) to accelerate exploration, validate logic, and refine KPI definitions during development
-  
+- Leveraged AI-assisted tools (Databricks Genie) to accelerate exploration,
+  validate logic, and refine KPI definitions during development
+
+**Databricks Executive Summary (Gold Layer)**
+![Databricks Executive Summary](docs/2026-04-30_databricks-executive-summary.png)
+
 ---
 ### 6. Key Design Decisions
 - Adopted medallion architecture to enforce data quality progression
