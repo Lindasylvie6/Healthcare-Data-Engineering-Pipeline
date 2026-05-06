@@ -121,4 +121,10 @@ This project is licensed under the [MIT LICENSE](LICENSE). You are free to use, 
 ---
 ### 👤 About me
 
-Hi there! I'm **Sylvie Linda**, data engineer who bridges the gap between raw healthcare data and the insights that drive clinical and operational decisions. This project reflects my belief that good data engineering isn't just about moving data, it's about making it trustworthy, fast, and meaningful for the people who depend on it.
+### 👤 About Me
+
+I'm **Sylvie Linda**, a data engineer specializing in cloud-native healthcare data pipelines on Azure. I design end-to-end solutions, from raw ingestion through medallion architecture transformations to executive-ready KPI dashboards using Azure Data Factory, Databricks, Delta Lake, and Power BI.
+
+This project reflects my focus on building scalable, governed data platforms that turn fragmented healthcare data into trusted insights for clinical and operational decision-making.
+
+📫 [Connect with me on LinkedIn]https://www.linkedin.com/in/sylvie-linda-85087416a/ | 📧 Lindasylvie6@email.com
