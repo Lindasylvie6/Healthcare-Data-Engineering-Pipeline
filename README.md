@@ -25,7 +25,7 @@ The solution centralizes patient, encounter, provider, and claims data into a go
 ---
 ### 2. Business Problem
 
-Healthcare stakeholders faced the following challenges:
+#### Healthcare stakeholders faced the following challenges:
 
 - KPI inconsistencies (e.g., readmission rate definition varied across reports)
 - Delayed reporting cycles for executive dashboards
@@ -122,7 +122,3 @@ This project is licensed under the [MIT LICENSE](LICENSE). You are free to use, 
 ### 👤 About me
 
 Hi there! I'm **Sylvie Linda**, data engineer who bridges the gap between raw healthcare data and the insights that drive clinical and operational decisions. This project reflects my belief that good data engineering isn't just about moving data, it's about making it trustworthy, fast, and meaningful for the people who depend on it.
-
-
-
-This project reflects my focus on building scalable data solutions and applying best practices in data engineering, including ETL processes, data modeling, and pipeline design.
