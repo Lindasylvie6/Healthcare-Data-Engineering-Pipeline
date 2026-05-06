@@ -1,19 +1,6 @@
 ## 🏥 Healthcare Data Engineering & Analytics Platform
 ### Enterprise Case Study: Modernizing Healthcare KPI Reporting with Azure & Databricks
 ---
-
-
-####  Gold Layer Data Model
-
-**gold_fact_clinical** includes:
-- `readmitted_flag`, `total_diagnoses`, `total_medications`
-- `total_procedures`, `clinical_sk`, `primary_dx_code`
-
-**gold_fact_claims** — revenue and denial tracking
-
-**Dimension tables:** `gold_dim_patient`, `gold_dim_provider`, `gold_dim_date`
-
----
 ### 1. Executive Summary
 
 Healthcare organizations often struggle with fragmented data sources, inconsistent KPI definitions, and delayed reporting for operational and clinical decision-making.
@@ -59,6 +46,15 @@ using Azure Data Factory and Databricks.
 **Data Integration Flow**
 ![Data Integration](docs/Data_Integratiion.png)
 
+####  Gold Layer Data Model
+
+**gold_fact_clinical** includes:
+- `readmitted_flag`, `total_diagnoses`, `total_medications`
+- `total_procedures`, `clinical_sk`, `primary_dx_code`
+
+**gold_fact_claims** — revenue and denial tracking
+**Dimension tables:** `gold_dim_patient`, `gold_dim_provider`, `gold_dim_date`
+
 ---
 ### 4. Pipeline Implementation
 
@@ -69,7 +65,7 @@ using Azure Data Factory and Databricks.
 ![Bronze Overview](docs/bronze_overview.png)
 
 ---
-### 4. Executive Summary Dashboard (Power BI)
+### 5. Executive Summary Dashboard (Power BI)
 
 #### Dashboard Previews
 
@@ -90,7 +86,7 @@ using Azure Data Factory and Databricks.
 
 ---  
 
-### 5. Databricks Implementation (Gold Layer Focus)
+### 6. Databricks Implementation (Gold Layer Focus)
 
 - Developed PySpark-based transformations for KPI aggregation
 - Designed and optimized the fact_monthly_kpis gold table
@@ -103,14 +99,14 @@ using Azure Data Factory and Databricks.
 ![Databricks Executive Summary](docs/2026-04-30_databricks-executive-summary.png)
 
 ---
-### 6. Key Design Decisions
+### 7. Key Design Decisions
 - Adopted medallion architecture to enforce data quality progression
 - Centralized KPI logic in the gold layer to avoid metric fragmentation
 - Used Delta Lake for ACID compliance and historical traceability
 - Separated transformation logic (Databricks) from visualization layer (Power BI)
 
 --- 
-### 7. Key Metrics Delivered
+### 8. Key Metrics Delivered
 
 | KPI | Value |
 |-----|-------|
@@ -123,7 +119,7 @@ using Azure Data Factory and Databricks.
 | Dashboard Pages | 4 (Executive, Clinical Quality, Revenue Cycle, Provider Performance) |
 
 ---
-### 8. Key Findings
+### 9. Key Findings
 
 - Readmission rates trended upward Jan–Mar 2025 (15.4% → 16.1%),  flagging a potential quality concern for clinical review
 - Oncology and Infectious Disease had the highest denial rates (~9.7–9.9%)
@@ -131,7 +127,7 @@ using Azure Data Factory and Databricks.
 - Cigna had the largest gap between billed ($16.38M) and paid ($10.55M); a ~36% reduction worth investigating
 
 ---
-### 9. Technologies Used
+### 10. Technologies Used
 - Azure Data Factory
 - Azure Data Lake
 - Databricks (PySpark, Delta Lake, SQL)
