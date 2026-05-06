@@ -34,9 +34,10 @@ A modern medallion architecture (Bronze → Silver → Gold) was implemented usi
 
 ##### Architecture Flow
 - Azure Data Factory → Data ingestion from raw healthcare sources
-- Databricks (Bronze Layer) → Raw ingestion and initial storage
-- Databricks (Silver Layer) → Data cleaning, validation, standardization
-- Databricks (Gold Layer) → KPI aggregation and business-ready datasets
+- Bronze Layer → Raw ingestion and initial storage
+- Silver Layer → Data cleaning, validation, standardization
+- Gold Layer → KPI aggregation and business-ready datasets
+- Databricks → Executive dashboards
 - Power BI → Executive dashboards and reporting layer
 
 --- 
