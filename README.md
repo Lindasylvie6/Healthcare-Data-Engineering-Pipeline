@@ -5,7 +5,7 @@
 
 ## 📐 Architecture Overview
 
-![DWH Architecture](docs/DWH_Architecture.png)
+![Healthcare_Arch](docs/Healthcare_Arch.png)
 
 ![Data Integration](docs/Data_Integratiion.png)
 
