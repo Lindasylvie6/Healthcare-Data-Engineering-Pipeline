@@ -46,7 +46,7 @@ A modern medallion architecture (Bronze → Silver → Gold) was implemented usi
 | Layer | Tool | Purpose |
 |---|---|---|
 | Ingestion | Azure Data Factory | Pull raw data from healthcare source systems |
-| Bronze | ADLS Gen2 | Raw storage, no transformations |
+| Bronze | Azure Blob Storage | Raw storage, no transformations |
 | Silver | Databricks | Cleaning, validation, standardization |
 | Gold | Databricks + Delta Lake | KPI aggregation, business-ready datasets |
 | Reporting | Power BI | Executive dashboards and stakeholder reporting |
