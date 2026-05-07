@@ -65,7 +65,7 @@ A modern medallion architecture (Bronze → Silver → Gold) was implemented usi
 
 ---
 
-## 5. Databricks Implementation (Gold Layer — Executive Summary)
+## 5. Databricks Implementation (Gold Layer : Executive Summary)
 
 Databricks connects to the Gold layer in Azure SQL Database to power the Executive Summary analysis and KPI exploration:
 
@@ -107,15 +107,15 @@ Databricks connects to the Gold layer in Azure SQL Database to power the Executi
 
 ## 📊 Dashboard Previews
 
-**Executive Summary** — KPI overview across 70K encounters and $437M billed
+**Executive Summary** : KPI overview across 70K encounters and $437M billed
 
 ![Executive Summary](docs/2026-04-28_powerbi-executive-summary.png)
 
-**Clinical Quality** — Length of stay, readmission rates, and chronic conditions by department
+**Clinical Quality** : Length of stay, readmission rates, and chronic conditions by department
 
 ![Clinical Quality](docs/2026-04-29_powerbi-clinical-quality.png)
 
-**Revenue Cycle** — Denial trends by payer, appeal success rate, and insurance provider comparison
+**Revenue Cycle** : Denial trends by payer, appeal success rate, and insurance provider comparison
 
 ![Revenue Cycle](docs/2026-04-29_powerbi-revenue-cycle.png)
 
